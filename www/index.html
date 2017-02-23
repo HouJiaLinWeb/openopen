@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>智能社-www.zhinegshe.com</title>
+<style>
+	#box{width:200px; height:200px; background:red; color:#fff;}
+	input{ margin:20px auto; display:block;}
+</style>
+<script type="text/javascript" src="cordova.js"></script>
+<script>
+	document.addEventListener('DOMContentLoaded',function(){
+		var oBtn=document.getElementById('btn');
+		
+		oBtn.onclick=function(){
+			navigator.camera.getPicture( function(str){
+				
+				var oImg=new Image();
+				oImg.src=str;
+				
+				oImg.width=200;
+				
+				document.body.appendChild(oImg);
+								
+			}, function(){
+				alert('拍照失败');
+			}, {
+				quality : 75,
+				 allowEdit : true	
+			} );	
+		};
+			
+	},false)
+</script>
+</head>
+
+<body>
+<input type="button" value="拍照" id="btn"/>
+</body>
+</html>
